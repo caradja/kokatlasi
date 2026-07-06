@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KökAtlası - Bölgeni Seç, Kökünü Keşfet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#09080f',
+                        cardBg: '#12111a',
+                        cardBorder: '#1f1d2b',
+                        brandPurple: '#8b5cf6',
+                        brandIndigo: '#6366f1',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #09080f;
+            background-image:
+                radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        /* Özel Kaydırma Çubuğu */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09080f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2838;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3750;
+        }
+
+        /* Kilitli bölge kartları */
+        .region-card.locked {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+        .region-card.locked:hover .lock-badge {
+            animation: lockShake 0.4s ease;
+        }
+        .region-card:not(.locked) {
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .region-card:not(.locked):hover {
+            transform: translateY(-4px);
+        }
+        @keyframes lockShake {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(-12deg); }
+            40% { transform: rotate(10deg); }
+            60% { transform: rotate(-6deg); }
+            80% { transform: rotate(4deg); }
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans min-h-screen flex flex-col antialiased">
+
+    <header class="w-full max-w-[1300px] mx-auto px-6 py-6 flex justify-between items-center z-10">
+        <div class="flex items-center gap-2 text-sm font-bold text-gray-200">
+            <i class="fa-solid fa-mountain text-brandPurple"></i> KökAtlası
+        </div>
+        <div class="flex items-center gap-2 text-[11px] text-gray-500">
+            <span class="px-3 py-1.5 rounded-full border border-cardBorder bg-cardBg">Arkeogenetik Modelleme Ağı</span>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full max-w-[1300px] mx-auto px-6 py-10 flex flex-col gap-14">
+
+        <!-- Hero -->
+        <section class="flex flex-col items-center text-center gap-5">
+            <div class="w-14 h-14 rounded-2xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-2xl text-brandPurple">
+                <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight max-w-2xl">
+                Bölgeni Seç, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandPurple to-brandIndigo">Kökünü Keşfet</span>
+            </h1>
+            <p class="text-gray-400 max-w-xl text-sm leading-relaxed">
+                Yaşadığın ya da soyunun geldiği bölgeyi seç. Her bölge için ayrı ayrı derlenmiş, döneme özgü antik DNA kaynaklarıyla kendi G25 admixture modellemeni saniyeler içinde çıkar.
+            </p>
+        </section>
+
+        <!-- Bölgeler -->
+        <section class="flex flex-col gap-6">
+            <div class="flex items-center gap-3">
+                <span class="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase">Bölgeler</span>
+                <div class="h-px flex-grow bg-cardBorder"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- 1. Doğu Karadeniz ve Kafkasya -- AKTİF -->
+                <a href="doğukaradeniz_ve_kafkasya.html" class="region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-6 shadow-xl">
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-11 h-11 rounded-xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-lg text-brandPurple">
+                            <i class="fa-solid fa-mountain"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold text-brandPurple mb-2">Doğu Karadeniz ve Kafkasya</h3>
+                    <p class="text-[12.5px] text-gray-400 leading-relaxed mb-4">
+                        Trabzon, Rize, Artvin ve Kafkasya hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-5">
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Bronz Çağı</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Demir Çağı</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Geç Antik</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Orta Çağ</span>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                    </div>
+                </a>
+
+                <!-- 2. Anadolu -- YAKINDA -->
+                <div class="region-card locked relative bg-cardBg border border-cardBorder rounded-2xl p-6 shadow-xl">
+                    <div class="lock-badge absolute -top-2 -right-2 w-7 h-7 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-[11px] text-gray-500 shadow-lg">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-11 h-11 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-lg text-amber-400">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> YAKINDA
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold text-amber-400/80 mb-2">Anadolu</h3>
+                    <p class="text-[12.5px] text-gray-500 leading-relaxed mb-4">
+                        Hitit, Frigya ve Bizans katmanlarıyla Orta ve Doğu Anadolu için genel bölgesel modelleme.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-5">
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Hitit</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Frigya</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Bizans</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Osmanlı</span>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-[11px] font-semibold text-gray-600">
+                        Yakında
+                    </div>
+                </div>
+
+                <!-- 3. Batı Anadolu -- YAKINDA -->
+                <div class="region-card locked relative bg-cardBg border border-cardBorder rounded-2xl p-6 shadow-xl">
+                    <div class="lock-badge absolute -top-2 -right-2 w-7 h-7 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-[11px] text-gray-500 shadow-lg">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-11 h-11 rounded-xl bg-teal-400/10 border border-teal-400/20 flex items-center justify-center text-lg text-teal-400">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> YAKINDA
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold text-teal-400/80 mb-2">Batı Anadolu</h3>
+                    <p class="text-[12.5px] text-gray-500 leading-relaxed mb-4">
+                        İyonya, Lidya ve Ege kıyı şeridi için Roma ve Osmanlı dönemi kaynaklarıyla modelleme.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-5">
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">İyonya</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Lidya</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Roma</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Osmanlı</span>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-[11px] font-semibold text-gray-600">
+                        Yakında
+                    </div>
+                </div>
+
+                <!-- 4. Balkan Türkü -- YAKINDA -->
+                <div class="region-card locked relative bg-cardBg border border-cardBorder rounded-2xl p-6 shadow-xl">
+                    <div class="lock-badge absolute -top-2 -right-2 w-7 h-7 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-[11px] text-gray-500 shadow-lg">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-11 h-11 rounded-xl bg-rose-400/10 border border-rose-400/20 flex items-center justify-center text-lg text-rose-400">
+                            <i class="fa-solid fa-flag"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> YAKINDA
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold text-rose-400/80 mb-2">Balkan Türkü</h3>
+                    <p class="text-[12.5px] text-gray-500 leading-relaxed mb-4">
+                        Rumeli göçmeni ve Balkan kökenli Türk toplulukları için Osmanlı dönemi ağırlıklı modelleme.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-5">
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Osmanlı</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Rumeli</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Balkan</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Göç</span>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-[11px] font-semibold text-gray-600">
+                        Yakında
+                    </div>
+                </div>
+
+                <!-- 5. Kürt -- YAKINDA -->
+                <div class="region-card locked relative bg-cardBg border border-cardBorder rounded-2xl p-6 shadow-xl">
+                    <div class="lock-badge absolute -top-2 -right-2 w-7 h-7 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-[11px] text-gray-500 shadow-lg">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="flex justify-between items-start mb-5">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-lg text-emerald-400">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> YAKINDA
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold text-emerald-400/80 mb-2">Kürt</h3>
+                    <p class="text-[12.5px] text-gray-500 leading-relaxed mb-4">
+                        Zagros ve Toros hattı için Med, Part ve Orta Çağ dönemi kaynaklarıyla bölgesel modelleme.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-5">
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Zagros</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Med</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Part</span>
+                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-white/5 text-gray-500 border border-white/10 font-semibold">Orta Çağ</span>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-[11px] font-semibold text-gray-600">
+                        Yakında
+                    </div>
+                </div>
+
+                <!-- 6. Yeni Bölgeler -- placeholder -->
+                <div class="region-card locked relative bg-cardBg border border-dashed border-cardBorder rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center text-center gap-2">
+                    <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg text-gray-600">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-gray-500">Yeni Bölgeler Yakında</h3>
+                    <p class="text-[12px] text-gray-600 leading-relaxed">Zaman içinde yeni bölgeler bu ağa eklenecek.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full max-w-[1300px] mx-auto px-6 py-8 text-center text-[11px] text-gray-600">
+        <p>© 2026 KökAtlası Arkeogenetik Modelleme Ağı. Tüm hesaplamalar tarayıcınızda, yerel olarak çalışır.</p>
+    </footer>
+
+</body>
+</html>
