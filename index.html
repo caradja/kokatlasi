@@ -30,11 +30,101 @@
     <style>
         body {
             background-color: #09080f;
-            background-image:
-                radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+            background-image: none;
             background-attachment: fixed;
+            overflow-x: hidden;
         }
+
+        /* Yavaşça süzülen arka plan ışık lekeleri */
+        .bg-orb {
+            position: fixed;
+            border-radius: 9999px;
+            filter: blur(90px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-orb-1 {
+            top: -10%;
+            left: 10%;
+            width: 420px;
+            height: 420px;
+            background: rgba(139, 92, 246, 0.16);
+            animation: orbDrift1 28s ease-in-out infinite;
+        }
+        .bg-orb-2 {
+            bottom: -15%;
+            right: 5%;
+            width: 380px;
+            height: 380px;
+            background: rgba(99, 102, 241, 0.12);
+            animation: orbDrift2 32s ease-in-out infinite;
+        }
+        .bg-orb-3 {
+            top: 20%;
+            right: 15%;
+            width: 350px;
+            height: 350px;
+            background: rgba(168, 85, 247, 0.1);
+            animation: orbDrift3 35s ease-in-out infinite;
+        }
+        .bg-orb-4 {
+            bottom: 10%;
+            left: 20%;
+            width: 320px;
+            height: 320px;
+            background: rgba(59, 130, 246, 0.09);
+            animation: orbDrift4 30s ease-in-out infinite;
+        }
+        @keyframes orbDrift1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, 30px) scale(1.08); }
+        }
+        @keyframes orbDrift2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, -20px) scale(1.1); }
+        }
+        @keyframes orbDrift3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 25px) scale(1.05); }
+        }
+        @keyframes orbDrift4 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(25px, -15px) scale(1.07); }
+        }
+
+        /* Kuzey ışıkları (Aurora Borealis) efekti */
+        #aurora {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(52, 211, 153, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 900px 350px at 30% -10%, rgba(34, 197, 94, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse 1000px 300px at 70% 5%, rgba(96, 165, 250, 0.06) 0%, transparent 55%);
+            background-attachment: fixed;
+            animation: auroraFlow 12s ease-in-out infinite;
+        }
+        @keyframes auroraFlow {
+            0%, 100% { 
+                background: 
+                    radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(52, 211, 153, 0.08) 0%, transparent 50%),
+                    radial-gradient(ellipse 900px 350px at 30% -10%, rgba(34, 197, 94, 0.1) 0%, transparent 60%),
+                    radial-gradient(ellipse 1000px 300px at 70% 5%, rgba(96, 165, 250, 0.06) 0%, transparent 55%);
+            }
+            50% { 
+                background: 
+                    radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(52, 211, 153, 0.14) 0%, transparent 50%),
+                    radial-gradient(ellipse 900px 350px at 30% -10%, rgba(34, 197, 94, 0.15) 0%, transparent 60%),
+                    radial-gradient(ellipse 1000px 300px at 70% 5%, rgba(96, 165, 250, 0.11) 0%, transparent 55%);
+            }
+        }
+
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+
         /* Özel Kaydırma Çubuğu */
         ::-webkit-scrollbar {
             width: 8px;
@@ -50,6 +140,66 @@
             background: #3a3750;
         }
 
+        /* Giriş animasyonları */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.05s; }
+        .delay-2 { animation-delay: 0.15s; }
+        .delay-3 { animation-delay: 0.25s; }
+        .delay-4 { animation-delay: 0.35s; }
+        .delay-5 { animation-delay: 0.45s; }
+        .delay-6 { animation-delay: 0.55s; }
+
+        /* Hero ikonunun hafif süzülme (nefes alma) hareketi */
+        .hero-icon-float {
+            animation: iconFloat 4.5s ease-in-out infinite;
+        }
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Gradient başlık yazısına hafif parıltı */
+        .gradient-shimmer {
+            background-size: 200% auto;
+            animation: shimmer 5s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        /* AKTİF durum noktasının nabız efekti */
+        .status-dot-live {
+            position: relative;
+        }
+        .status-dot-live::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: inherit;
+            animation: statusPulse 1.8s ease-out infinite;
+        }
+        @keyframes statusPulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(2.6); opacity: 0; }
+        }
+
+        /* "Modellemeyi Aç" okunun hover'da kayması */
+        .arrow-link i {
+            transition: transform 0.25s ease;
+        }
+        .arrow-link:hover i {
+            transform: translateX(4px);
+        }
+
         /* Kilitli bölge kartları */
         .region-card.locked {
             opacity: 0.55;
@@ -59,10 +209,12 @@
             animation: lockShake 0.4s ease;
         }
         .region-card:not(.locked) {
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .region-card:not(.locked):hover {
-            transform: translateY(-4px);
+            transform: translateY(-12px) scale(1.04);
+            box-shadow: 0 20px 50px -8px rgba(139, 92, 246, 0.45);
+            z-index: 2;
         }
         @keyframes lockShake {
             0%, 100% { transform: rotate(0deg); }
@@ -71,11 +223,115 @@
             60% { transform: rotate(-6deg); }
             80% { transform: rotate(4deg); }
         }
+
+        /* Yıldız / parçacık arka planı */
+        #starField {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            animation: starDrift 80s linear infinite;
+        }
+        @keyframes starDrift {
+            from { transform: translateX(0); }
+            to { transform: translateX(100px); }
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 9999px;
+            opacity: 0;
+            animation: twinkle ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: var(--star-max-opacity, 0.7); transform: scale(1); }
+        }
+
+        /* Kart üzerinde fareyi takip eden spotlight/glow efekti */
+        .region-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .region-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), rgba(139, 92, 246, 0.18), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .region-card:hover::before {
+            opacity: 1;
+        }
+        .region-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Karta tıklayınca kısa "basma" mikro-animasyonu */
+        .region-card.card-pressing {
+            transform: scale(0.96) !important;
+            transition: transform 0.15s ease !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in-up, .hero-icon-float, .gradient-shimmer, .status-dot-live::after, .bg-orb, .star {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            #cursorGlow {
+                display: none !important;
+            }
+        }
+
+        /* İmleci takip eden yumuşak mor ışık (marka rengiyle uyumlu) */
+        #cursorGlow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            will-change: transform;
+        }
+        #cursorGlow.visible {
+            opacity: 1;
+        }
+        #cursorGlow .glow-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 26px;
+            height: 26px;
+            margin-left: -13px;
+            margin-top: -13px;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.9) 0%, rgba(139, 92, 246, 0.35) 45%, transparent 75%);
+            filter: blur(4px);
+        }
     </style>
 </head>
 <body class="text-gray-300 font-sans min-h-screen flex flex-col antialiased">
 
-    <header class="w-full max-w-[1300px] mx-auto px-6 py-6 flex justify-between items-center z-10">
+    <div id="aurora"></div>
+    <div id="starField"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-orb bg-orb-4"></div>
+    <div id="cursorGlow"><div class="glow-inner"></div></div>
+
+
+    <header class="w-full max-w-[1300px] mx-auto px-6 py-6 flex justify-between items-center z-10 fade-in-up delay-1">
         <div class="flex items-center gap-2 text-sm font-bold text-gray-200">
             <i class="fa-solid fa-mountain text-brandPurple"></i> KökAtlası
         </div>
@@ -87,56 +343,69 @@
     <main class="flex-grow w-full max-w-[1300px] mx-auto px-6 py-10 flex flex-col gap-14">
 
         <!-- Hero -->
-        <section class="flex flex-col items-center text-center gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-2xl text-brandPurple">
+        <section class="flex flex-col items-center text-center gap-2">
+            <div class="hero-icon-float fade-in-up delay-1 w-12 h-12 rounded-2xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-lg text-brandPurple">
                 <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight max-w-2xl">
-                Bölgeni Seç, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandPurple to-brandIndigo">Kökenini Keşfet</span>
+            <h1 class="fade-in-up delay-2 text-3xl sm:text-4xl font-extrabold leading-tight max-w-3xl">
+                <div class="text-white">KökAtlası</div>
+                <div class="gradient-shimmer text-transparent bg-clip-text bg-gradient-to-r from-brandPurple via-indigo-400 to-brandIndigo">Genetik Pasaport Merkezi</div>
             </h1>
-            <p class="text-gray-400 max-w-xl text-sm leading-relaxed">
+            <p class="fade-in-up delay-3 text-gray-400 max-w-xl text-sm leading-relaxed">
                 Yaşadığın ya da soyunun geldiği bölgeyi seç. Her bölge için ayrı ayrı derlenmiş, döneme özgü antik DNA kaynaklarıyla kendi G25 admixture modellemeni saniyeler içinde çıkar.
             </p>
         </section>
 
         <!-- Bölgeler -->
         <section class="flex flex-col gap-6">
-            <div class="flex items-center gap-3">
+            <div class="fade-in-up delay-3 flex items-center gap-3">
                 <span class="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase">Bölgeler</span>
                 <div class="h-px flex-grow bg-cardBorder"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
                 <!-- 1. Doğu Karadeniz -- AKTİF -->
-                <a href="dogu-karadeniz-kafkasya.html" class="region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-6 shadow-xl">
+                <a href="dogu-karadeniz-kafkasya.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-7 shadow-xl">
                     <div class="flex justify-between items-start mb-5">
-                        <div class="w-11 h-11 rounded-xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-lg text-brandPurple">
+                        <div class="w-12 h-12 rounded-xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-xl text-brandPurple">
                             <i class="fa-solid fa-mountain"></i>
                         </div>
                         <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                            <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
                         </span>
                     </div>
-                    <h3 class="text-base font-bold text-brandPurple mb-2">Doğu Karadeniz</h3>
-                    <p class="text-[12.5px] text-gray-400 leading-relaxed mb-4">
-                        Trabzon, Rize, ve Artvin hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    <h3 class="text-lg font-bold text-brandPurple mb-3">Doğu Karadeniz</h3>
+                    <p class="text-[13px] text-gray-400 leading-relaxed mb-5">
+                        Trabzon, Rize, Artvin, Gümüşhane, Bayburt ve Giresun hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
-                    <div class="flex flex-wrap gap-1.5 mb-5">
-                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Bronz Çağı</span>
-                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Demir Çağı</span>
-                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Geç Antik</span>
-                        <span class="px-2 py-0.5 text-[9px] rounded-full bg-brandPurple/10 text-brandPurple border border-brandPurple/20 font-semibold">Orta Çağ</span>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
+                        <div class="px-2 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 hover:bg-amber-500/15 transition-colors">
+                            <i class="fa-solid fa-gem text-amber-400 text-xs"></i>
+                            <span class="text-[10px] font-semibold text-amber-300">Bronz Çağı</span>
+                        </div>
+                        <div class="px-2 py-2 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center gap-2 hover:bg-orange-500/15 transition-colors">
+                            <i class="fa-solid fa-shield text-orange-400 text-xs"></i>
+                            <span class="text-[10px] font-semibold text-orange-300">Demir Çağı</span>
+                        </div>
+                        <div class="px-2 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center gap-2 hover:bg-cyan-500/15 transition-colors">
+                            <i class="fa-solid fa-scroll text-cyan-400 text-xs"></i>
+                            <span class="text-[10px] font-semibold text-cyan-300">Geç Antik</span>
+                        </div>
+                        <div class="px-2 py-2 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center gap-2 hover:bg-red-500/15 transition-colors">
+                            <i class="fa-solid fa-crown text-red-400 text-xs"></i>
+                            <span class="text-[10px] font-semibold text-red-300">Orta Çağ</span>
+                        </div>
                     </div>
-                    <div class="pt-4 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
-                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                    <div class="arrow-link pt-4 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
                 </a>
 
 
                 <!-- 6. Yeni Bölgeler -- placeholder -->
-                <div class="region-card locked relative bg-cardBg border border-dashed border-cardBorder rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center text-center gap-2">
-                    <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg text-gray-600">
+                <div class="fade-in-up delay-5 region-card locked relative bg-cardBg border border-dashed border-cardBorder rounded-2xl p-7 shadow-xl flex flex-col items-center justify-center text-center gap-2">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg text-gray-600">
                         <i class="fa-solid fa-plus"></i>
                     </div>
                     <h3 class="text-sm font-bold text-gray-500">Yeni Bölgeler Yakında</h3>
@@ -148,9 +417,94 @@
 
     </main>
 
-    <footer class="w-full max-w-[1300px] mx-auto px-6 py-8 text-center text-[11px] text-gray-600">
+    <footer class="fade-in-up delay-6 w-full max-w-[1300px] mx-auto px-6 py-8 text-center text-[11px] text-gray-600">
         <p>© 2026 KökAtlası Arkeogenetik Modelleme Ağı. Tüm hesaplamalar tarayıcınızda, yerel olarak çalışır.</p>
     </footer>
+    <script>
+        // --- Yıldız / parçacık arka planı ---
+        // Az sayıda, yavaşça parıldayan nokta oluşturuyoruz (abartısız, atmosfer için).
+        (function createStarField() {
+            const field = document.getElementById('starField');
+            const starCount = 300;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = (Math.random() * 1.6 + 0.6).toFixed(1); // 0.6px - 2.2px
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = (Math.random() * 100) + '%';
+                star.style.top = (Math.random() * 100) + '%';
+                star.style.setProperty('--star-max-opacity', (Math.random() * 0.5 + 0.3).toFixed(2));
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's'; // 3s - 7s
+                star.style.animationDelay = (Math.random() * 6) + 's';
+                field.appendChild(star);
+            }
+        })();
+
+        // --- Kartlarda fareyi takip eden spotlight efekti ---
+        document.querySelectorAll('.region-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mx', x + '%');
+                card.style.setProperty('--my', y + '%');
+            });
+        });
+
+        // --- Aktif kartlara tıklayınca kısa "basma" animasyonu, sonra geçiş ---
+        document.querySelectorAll('a.region-card:not(.locked)').forEach(card => {
+            card.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                this.classList.add('card-pressing');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 150);
+            });
+        });
+
+        // --- İmleci takip eden yumuşak sarı ışık (ateş böceği efekti) ---
+        // Sadece gerçek fareye sahip cihazlarda (masaüstü) çalışır, dokunmatik ekranlarda devre dışı kalır.
+        (function initCursorGlow() {
+            const isTouchDevice = window.matchMedia('(pointer: coarse)').matches || !window.matchMedia('(pointer: fine)').matches;
+            if (isTouchDevice) return;
+
+            const glow = document.getElementById('cursorGlow');
+            let targetX = window.innerWidth / 2;
+            let targetY = window.innerHeight / 2;
+            let currentX = targetX;
+            let currentY = targetY;
+            let hasMoved = false;
+
+            document.addEventListener('mousemove', (e) => {
+                targetX = e.clientX;
+                targetY = e.clientY;
+                if (!hasMoved) {
+                    hasMoved = true;
+                    currentX = targetX;
+                    currentY = targetY;
+                    glow.classList.add('visible');
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                glow.classList.remove('visible');
+            });
+            document.addEventListener('mouseenter', () => {
+                if (hasMoved) glow.classList.add('visible');
+            });
+
+            function animateGlow() {
+                // Yumuşak gecikme (lerp): her karede hedefe %15 daha yaklaşır, "esnek" bir takip hissi verir
+                currentX += (targetX - currentX) * 0.15;
+                currentY += (targetY - currentY) * 0.15;
+                glow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                requestAnimationFrame(animateGlow);
+            }
+            animateGlow();
+        })();
+    </script>
 
 </body>
 </html>
