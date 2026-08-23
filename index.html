@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KökAtlası - Bölgeni Seç, Kökenini Keşfet</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -14,6 +14,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         darkBg: '#09080f',
@@ -363,122 +364,211 @@
                 <div class="h-px flex-grow bg-cardBorder"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
 
-                <!-- 1. Doğu Karadeniz -- AKTİF -->
-                <a href="dogu-karadeniz.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-7 shadow-xl">
-                    <div class="flex justify-between items-start mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-xl text-brandPurple">
+                <!-- 1. Orta ve Doğu Karadeniz -- AKTİF -->
+                <a href="ortavedogukrdnz.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
                             <i class="fa-solid fa-mountain"></i>
                         </div>
                         <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
                             <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-brandPurple mb-3">Doğu Karadeniz</h3>
-                    <p class="text-[13px] text-gray-400 leading-relaxed mb-5">
-                        Trabzon, Rize, Artvin, Gümüşhane, Bayburt ve Giresun hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-400">Orta ve Doğu Karadeniz</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        Kastamonu, Sinop, Samsun, Amasya, Tokat, Ordu, Giresun, Gümüşhane, Trabzon, Rize, Bayburt ve Artvin hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
-                        <div class="px-2 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 hover:bg-amber-500/15 transition-colors">
-                            <i class="fa-solid fa-gem text-amber-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-amber-300">Bronz Çağı</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center gap-2 hover:bg-orange-500/15 transition-colors">
-                            <i class="fa-solid fa-shield text-orange-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-orange-300">Demir Çağı</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center gap-2 hover:bg-cyan-500/15 transition-colors">
-                            <i class="fa-solid fa-scroll text-cyan-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-cyan-300">Geç Antik</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center gap-2 hover:bg-red-500/15 transition-colors">
-                            <i class="fa-solid fa-crown text-red-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-red-300">Orta Çağ</span>
-                        </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
                     </div>
-                    <div class="arrow-link pt-4 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+
+                <!-- 1b. Batı Karadeniz -- AKTİF -->
+                <a href="batikrdnz.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
+                            <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-blue-400">Batı Karadeniz</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        Zonguldak, Bartın, Karabük, Bolu ve Düzce hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
+                    </div>
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
                         Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
                 </a>
 
                 <!-- 2. Kafkasya -- AKTİF -->
-                <a href="kafkasya.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-7 shadow-xl">
-                    <div class="flex justify-between items-start mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-xl text-brandPurple">
+                <a href="kafkasya.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
                             <i class="fa-solid fa-mountain-sun"></i>
                         </div>
                         <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
                             <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-brandPurple mb-3">Kafkasya</h3>
-                    <p class="text-[13px] text-gray-400 leading-relaxed mb-5">
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-teal-400">Kafkasya</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
                         Gürcistan ve Kuzey Kafkasya hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
-                        <div class="px-2 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 hover:bg-amber-500/15 transition-colors">
-                            <i class="fa-solid fa-gem text-amber-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-amber-300">Bronz Çağı</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center gap-2 hover:bg-orange-500/15 transition-colors">
-                            <i class="fa-solid fa-shield text-orange-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-orange-300">Demir Çağı</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center gap-2 hover:bg-cyan-500/15 transition-colors">
-                            <i class="fa-solid fa-scroll text-cyan-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-cyan-300">Geç Antik</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center gap-2 hover:bg-red-500/15 transition-colors">
-                            <i class="fa-solid fa-crown text-red-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-red-300">Orta Çağ</span>
-                        </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
                     </div>
-                    <div class="arrow-link pt-4 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
                         Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
                 </a>
 
 
                 <!-- 3. Ortadoğu Anadolu -- AKTİF -->
-                <a href="ortadoguand.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-7 shadow-xl">
-                    <div class="flex justify-between items-start mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-xl text-brandPurple">
+                <a href="ortadoguand.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
                             <i class="fa-solid fa-sun"></i>
                         </div>
                         <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
                             <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-brandPurple mb-3">Ortadoğu Anadolu</h3>
-                    <p class="text-[13px] text-gray-400 leading-relaxed mb-5">
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-red-300 to-orange-400">Ortadoğu Anadolu</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
                         Mardin, Diyarbakır, Şanlıurfa, Gaziantep, Kahramanmaraş ve Hakkari hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
-                        <div class="px-2 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 hover:bg-amber-500/15 transition-colors">
-                            <i class="fa-solid fa-gem text-amber-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-amber-300">Bronz Çağı</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-orange-500/10 border border-orange-500/30 flex items-center gap-2 hover:bg-orange-500/15 transition-colors">
-                            <i class="fa-solid fa-shield text-orange-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-orange-300">Demir Çağı</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center gap-2 hover:bg-cyan-500/15 transition-colors">
-                            <i class="fa-solid fa-scroll text-cyan-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-cyan-300">Geç Antik</span>
-                        </div>
-                        <div class="px-2 py-2 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center gap-2 hover:bg-red-500/15 transition-colors">
-                            <i class="fa-solid fa-crown text-red-400 text-xs"></i>
-                            <span class="text-[10px] font-semibold text-red-300">Orta Çağ</span>
-                        </div>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
                     </div>
-                    <div class="arrow-link pt-4 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
                         Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
                 </a>
 
-                <!-- 6. Yeni Bölgeler -- placeholder -->
-                <div class="fade-in-up delay-5 region-card locked relative bg-cardBg border border-dashed border-cardBorder rounded-2xl p-7 shadow-xl flex flex-col items-center justify-center text-center gap-2">
+                <!-- 4. Yukarı Sakarya -- AKTİF -->
+                <a href="yukarısakarya.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
+                            <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-indigo-300">Yukarı Sakarya</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        Eskişehir ve Ankara hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
+                    </div>
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+
+                <!-- 5. Batı Anadolu -- AKTİF -->
+                <a href="batıand.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
+                            <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-green-300 to-teal-400">Batı Anadolu</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        İzmir, Manisa, Aydın, Denizli, Muğla, Afyonkarahisar, Kütahya, Uşak, Bursa, Balıkesir, Çanakkale, Bilecik, Edirne, Kırklareli, Tekirdağ, İstanbul, Kocaeli, Sakarya ve Yalova hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
+                    </div>
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+
+                <!-- 6. Akdeniz -- AKTİF -->
+                <a href="akdeniz.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
+                            <i class="fa-solid fa-umbrella-beach"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
+                            <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-indigo-300 to-blue-400">Akdeniz</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        Antalya, Mersin, Adana, Hatay, Burdur, Isparta, Osmaniye, Kahramanmaraş ve Muğla hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
+                    </div>
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+
+                <!-- 7. Kuzeydoğu Anadolu -- AKTİF -->
+                <a href="kuzeydoguand.html" class="fade-in-up delay-4 region-card block bg-cardBg border border-cardBorder hover:border-brandPurple/40 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brandPurple/10 border border-brandPurple/20 flex items-center justify-center text-sm text-brandPurple">
+                            <i class="fa-solid fa-mountain"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400">
+                            <span class="status-dot-live w-1.5 h-1.5 rounded-full bg-emerald-400"></span> AKTİF
+                        </span>
+                    </div>
+                    <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-fuchsia-300 to-purple-400">Kuzeydoğu Anadolu</h3>
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        Erzurum, Kars, Ardahan, Iğdır, Erzincan, Bingöl, Bitlis, Muş, Van, Elazığ ve Malatya hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-mono text-amber-300">Bronz Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-[10px] font-mono text-orange-300">Demir Çağı</span>
+                        <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">Geç Antik</span>
+                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] font-mono text-red-300">Orta Çağ</span>
+                    </div>
+                    <div class="arrow-link pt-3 border-t border-white/5 text-[11px] font-semibold text-brandPurple flex items-center gap-1.5">
+                        Modellemeyi Aç <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+
+                <!-- 8. Yeni Bölgeler -- placeholder -->
+                <div class="fade-in-up delay-5 region-card locked relative bg-cardBg border border-dashed border-cardBorder rounded-2xl p-5 shadow-xl flex flex-col items-center justify-center text-center gap-2">
                     <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg text-gray-600">
                         <i class="fa-solid fa-plus"></i>
                     </div>
