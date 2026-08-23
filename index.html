@@ -319,6 +319,28 @@
             background: radial-gradient(circle, rgba(139, 92, 246, 0.9) 0%, rgba(139, 92, 246, 0.35) 45%, transparent 75%);
             filter: blur(4px);
         }
+
+        /* Bölge kartları: üzerine gelince kart yumuşakça büyüsün, açıklama tam görünsün */
+        .region-card {
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+            transform-origin: center;
+            will-change: transform;
+        }
+        .region-card:hover {
+            transform: scale(1.06);
+            box-shadow: 0 25px 50px -15px rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.5);
+            z-index: 20;
+        }
+        .region-desc {
+            max-height: 3.8em; /* ~3 satır */
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            display: block;
+        }
+        .region-card:hover .region-desc {
+            max-height: 12em; /* tüm metin sığacak kadar */
+        }
     </style>
 </head>
 <body class="text-gray-300 font-sans min-h-screen flex flex-col antialiased">
@@ -377,7 +399,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-400">Orta ve Doğu Karadeniz</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         Kastamonu, Sinop, Samsun, Amasya, Tokat, Ordu, Giresun, Trabzon, Rize ve Artvin hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -402,7 +424,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-blue-400">Batı Karadeniz</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         Zonguldak, Bartın, Karabük, Bolu ve Düzce hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -427,7 +449,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-teal-400">Kafkasya</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         Gürcistan ve Kuzey Kafkasya hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -453,7 +475,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-red-300 to-orange-400">Ortadoğu Anadolu</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         Mardin, Diyarbakır, Şanlıurfa, Gaziantep, Kahramanmaraş ve Hakkari hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -478,7 +500,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-indigo-300">Yukarı Sakarya</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         Eskişehir ve Ankara hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -503,7 +525,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-green-300 to-teal-400">Batı Anadolu</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         İzmir, Manisa, Aydın, Denizli, Muğla, Afyonkarahisar, Kütahya, Uşak, Bursa, Balıkesir, Çanakkale, Bilecik, Edirne, Kırklareli, Tekirdağ, İstanbul, Kocaeli, Sakarya ve Yalova hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -528,7 +550,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-indigo-300 to-blue-400">Akdeniz</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                         Antalya, Mersin, Adana, Hatay, Burdur, Isparta, Osmaniye, Kahramanmaraş ve Muğla hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
@@ -553,7 +575,7 @@
                         </span>
                     </div>
                     <h3 class="text-base font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-fuchsia-300 to-purple-400">Kuzeydoğu Anadolu</h3>
-                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                    <p class="text-[12px] text-gray-400 leading-relaxed mb-4 region-desc">
                        Erzurum, Kars, Ardahan, Iğdır, Ağrı, Erzincan, Bayburt ve Gümüşhane  hattı için Bronz Çağı'ndan Orta Çağ'a uzanan antik popülasyon kaynaklarıyla admixture modellemesi.
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-4">
