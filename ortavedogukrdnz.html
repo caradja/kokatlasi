@@ -30,100 +30,14 @@
     <style>
         body {
             background-color: #09080f;
-            background-image: none;
+            background-image: radial-gradient(ellipse 1400px 700px at 50% -10%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
             background-attachment: fixed;
             overflow-x: hidden;
-        }
-
-        /* Yavaşça süzülen arka plan ışık lekeleri (profesyonel görünüm için sadeleştirildi: daha az, daha soluk, daha yavaş) */
-        .bg-orb {
-            position: fixed;
-            border-radius: 9999px;
-            filter: blur(100px);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .bg-orb-1 {
-            top: -10%;
-            left: 10%;
-            width: 420px;
-            height: 420px;
-            background: rgba(139, 92, 246, 0.09);
-            animation: orbDrift1 48s ease-in-out infinite;
-        }
-        .bg-orb-2 {
-            bottom: -15%;
-            right: 5%;
-            width: 380px;
-            height: 380px;
-            background: rgba(52, 211, 153, 0.07);
-            animation: orbDrift2 52s ease-in-out infinite;
-        }
-        @keyframes orbDrift1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(25px, 18px) scale(1.04); }
-        }
-        @keyframes orbDrift2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-18px, -12px) scale(1.05); }
-        }
-
-        /* Kuzey ışıkları (Aurora Borealis) efekti — daha soluk ve yavaş, dikkat dağıtmayan bir zemin dokusu */
-        #aurora {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            background: 
-                radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(52, 211, 153, 0.05) 0%, transparent 50%),
-                radial-gradient(ellipse 900px 350px at 30% -10%, rgba(34, 197, 94, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 1000px 300px at 70% 5%, rgba(96, 165, 250, 0.04) 0%, transparent 55%);
-            background-attachment: fixed;
-            animation: auroraFlow 22s ease-in-out infinite;
-        }
-        @keyframes auroraFlow {
-            0%, 100% { 
-                background: 
-                    radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(52, 211, 153, 0.05) 0%, transparent 50%),
-                    radial-gradient(ellipse 900px 350px at 30% -10%, rgba(34, 197, 94, 0.06) 0%, transparent 60%),
-                    radial-gradient(ellipse 1000px 300px at 70% 5%, rgba(96, 165, 250, 0.04) 0%, transparent 55%);
-            }
-            50% { 
-                background: 
-                    radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(52, 211, 153, 0.08) 0%, transparent 50%),
-                    radial-gradient(ellipse 900px 350px at 30% -10%, rgba(34, 197, 94, 0.09) 0%, transparent 60%),
-                    radial-gradient(ellipse 1000px 300px at 70% 5%, rgba(96, 165, 250, 0.06) 0%, transparent 55%);
-            }
         }
 
         header, main, footer {
             position: relative;
             z-index: 1;
-        }
-
-        /* Yıldız / parçacık arka planı */
-        #starField {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-            animation: starDrift 80s linear infinite;
-        }
-        @keyframes starDrift {
-            from { transform: translateX(0); }
-            to { transform: translateX(100px); }
-        }
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 9999px;
-            opacity: 0;
-            animation: twinkle ease-in-out infinite;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.8); }
-            50% { opacity: var(--star-max-opacity, 0.7); transform: scale(1); }
         }
 
         /* İmleci takip eden yumuşak mor ışık (marka rengiyle uyumlu) */
@@ -156,11 +70,6 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .bg-orb, .star {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
             #cursorGlow {
                 display: none !important;
             }
@@ -410,10 +319,6 @@
     </style>
 </head>
 <body class="text-gray-300 font-sans min-h-screen flex flex-col antialiased">
-    <div id="aurora"></div>
-    <div id="starField"></div>
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
     <div id="cursorGlow"><div class="glow-inner"></div></div>
 
     <!-- Fare ile resim üzerine gelince (veya mobilde dokununca) beliren büyük önizleme kutusu -->
@@ -3410,24 +3315,6 @@ function distanceToLabel(distance) {
         }
     </script>
     <script>
-        // --- Yıldız / parçacık arka planı ---
-        (function createStarField() {
-            const field = document.getElementById('starField');
-            const starCount = 300;
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = (Math.random() * 1.6 + 0.6).toFixed(1); // 0.6px - 2.2px
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.left = (Math.random() * 100) + '%';
-                star.style.top = (Math.random() * 100) + '%';
-                star.style.setProperty('--star-max-opacity', (Math.random() * 0.5 + 0.3).toFixed(2));
-                star.style.animationDuration = (Math.random() * 4 + 3) + 's'; // 3s - 7s
-                star.style.animationDelay = (Math.random() * 6) + 's';
-                field.appendChild(star);
-            }
-        })();
 
         // --- İmleci takip eden yumuşak mor ışık (ateş böceği efekti) ---
         // Sadece gerçek fareye sahip cihazlarda (masaüstü) çalışır, dokunmatik ekranlarda devre dışı kalır.
