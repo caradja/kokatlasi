@@ -1,0 +1,41 @@
+/* ==========================================================================
+   KökAtlası — Ortak Arka Plan Yapısı (background.css)
+   Tüm bölge sayfalarında paylaşılan YAPISAL kurallar (boyut, sabitleme, katmanlama,
+   nefes alma animasyonu). RENK her sayfada kendi <style> bloğunda tanımlanır,
+   böylece her bölge kendine özgü bir ışıklandırma tonuna sahip olur.
+   ========================================================================== */
+
+body {
+    background-color: #09080f;
+    background-size: 480px 480px, 100% 100%;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* İçerik (header/main/footer) her zaman arka plan katmanının üstünde kalsın */
+header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Üstteki gölgenin çok yavaş, göz yormayan "nefes alma" nabzı (rengi sayfaya özgü) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    animation: bgBreathe 26s ease-in-out infinite;
+}
+@keyframes bgBreathe {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none !important;
+        opacity: 0.6 !important;
+    }
+}
