@@ -28,52 +28,7 @@
     </script>
     
     <style>
-        body {
-            background-color: #09080f;
-            background-image: radial-gradient(ellipse 1400px 700px at 50% -10%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
-            background-attachment: fixed;
-            overflow-x: hidden;
-        }
-
-        header, main, footer {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* İmleci takip eden yumuşak mor ışık (marka rengiyle uyumlu) */
-        #cursorGlow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            pointer-events: none;
-            z-index: 99999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            will-change: transform;
-        }
-        #cursorGlow.visible {
-            opacity: 1;
-        }
-        #cursorGlow .glow-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 26px;
-            height: 26px;
-            margin-left: -13px;
-            margin-top: -13px;
-            border-radius: 9999px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.9) 0%, rgba(139, 92, 246, 0.35) 45%, transparent 75%);
-            filter: blur(4px);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            #cursorGlow {
-                display: none !important;
-            }
-        }
+        /* Arka plan stilleri: background.css */
 
         /* Sayfa açılışında elemanların sırayla (fade + yukarı kayarak) belirmesi */
         @keyframes fadeInUp {
@@ -317,10 +272,19 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="background.css">
+    <style>
+        /* Bölgeye özgü ışıklandırma: Orta ve Doğu Karadeniz — Pontus/kıyı teması */
+        body {
+            background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22480%22%20height%3D%22480%22%20viewBox%3D%220%200%20480%20480%22%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%232dd4bf%22%20stroke-width%3D%221%22%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C60%20C60%2C20%20100%2C100%20180%2C60%20S300%2C20%20380%2C60%20S500%2C100%20580%2C60%22%20stroke-opacity%3D%220.05%22/%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C110%20C50%2C150%20110%2C80%20190%2C120%20S310%2C160%20390%2C120%20S510%2C80%20580%2C120%22%20stroke-opacity%3D%220.045%22/%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C175%20C70%2C140%20120%2C210%20200%2C175%20S320%2C135%20400%2C175%20S500%2C215%20580%2C175%22%20stroke-opacity%3D%220.06%22%20stroke%3D%22%2334d399%22/%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C230%20C60%2C270%20130%2C195%20210%2C235%20S330%2C275%20400%2C235%20S510%2C195%20580%2C235%22%20stroke-opacity%3D%220.04%22/%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C300%20C80%2C260%20130%2C330%20210%2C300%20S330%2C265%20400%2C300%20S500%2C335%20580%2C300%22%20stroke-opacity%3D%220.055%22%20stroke%3D%22%232dd4bf%22/%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C360%20C60%2C395%20120%2C325%20200%2C360%20S320%2C400%20400%2C360%20S510%2C325%20580%2C360%22%20stroke-opacity%3D%220.04%22/%3E%0A%20%20%3Cpath%20d%3D%22M-20%2C420%20C70%2C385%20130%2C450%20210%2C420%20S330%2C390%20400%2C420%20S500%2C450%20580%2C420%22%20stroke-opacity%3D%220.05%22%20stroke%3D%22%2334d399%22/%3E%0A%3C/g%3E%0A%3C/svg%3E"), radial-gradient(ellipse 1400px 700px at 50% -10%, rgba(45, 212, 191, 0.06) 0%, transparent 60%);
+        }
+        body::before {
+            background: radial-gradient(ellipse 1400px 700px at 50% -10%, rgba(45, 212, 191, 0.09) 0%, transparent 60%);
+        }
+    </style>
 </head>
 <body class="text-gray-300 font-sans min-h-screen flex flex-col antialiased">
-    <div id="cursorGlow"><div class="glow-inner"></div></div>
-
+    
     <!-- Fare ile resim üzerine gelince (veya mobilde dokununca) beliren büyük önizleme kutusu -->
     <div id="hoverDimOverlay"></div>
     <div id="hoverImgPreview">
@@ -3313,47 +3277,6 @@ function distanceToLabel(distance) {
             hoverPreviewClose.addEventListener('click', closeHoverPreview);
         }
     </script>
-    <script>
-
-        // --- İmleci takip eden yumuşak mor ışık (ateş böceği efekti) ---
-        // Sadece gerçek fareye sahip cihazlarda (masaüstü) çalışır, dokunmatik ekranlarda devre dışı kalır.
-        (function initCursorGlow() {
-            const isTouchDevice = window.matchMedia('(pointer: coarse)').matches || !window.matchMedia('(pointer: fine)').matches;
-            if (isTouchDevice) return;
-
-            const glow = document.getElementById('cursorGlow');
-            let targetX = window.innerWidth / 2;
-            let targetY = window.innerHeight / 2;
-            let currentX = targetX;
-            let currentY = targetY;
-            let hasMoved = false;
-
-            document.addEventListener('mousemove', (e) => {
-                targetX = e.clientX;
-                targetY = e.clientY;
-                if (!hasMoved) {
-                    hasMoved = true;
-                    currentX = targetX;
-                    currentY = targetY;
-                    glow.classList.add('visible');
-                }
-            });
-
-            document.addEventListener('mouseleave', () => {
-                glow.classList.remove('visible');
-            });
-            document.addEventListener('mouseenter', () => {
-                if (hasMoved) glow.classList.add('visible');
-            });
-
-            function animateGlow() {
-                currentX += (targetX - currentX) * 0.15;
-                currentY += (targetY - currentY) * 0.15;
-                glow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
-                requestAnimationFrame(animateGlow);
-            }
-            animateGlow();
-        })();
-    </script>
+    
 </body>
 </html>
